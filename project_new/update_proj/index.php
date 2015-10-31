@@ -1,26 +1,6 @@
 <?php 
 include 'connection.php'; 
-$radio=$_POST['radio'];
-$qry="select * from project where p_id=$radio";
-$qt=mysql_query($qry);
-$row=mysql_fetch_array($qt);
-
-
-
-
-
-/*session_start();
-include 'connection.php';
-$p_id=$_POST['radio[]'];
-echo $p_id;
-$result=$conn->query("select * from project where p_id='$p_id'");
-$row=$result->fetch_assoc();*/
-$p_name=$row['p_name'];
-$start_date=$row['p_start_date'];
-$end_date=$row['p_end_date'];
-$status=$row['p_status'];
-$budget=$row['p_budget'];
-$details=$row['p_details'];
+session_start();
 $msg1="";
 if(isset($_GET['msg']))
 	
@@ -41,6 +21,18 @@ if(isset($_GET['msg']))
 	}	
 	
 }
+
+$radio=$_POST['radio'];
+$_SESSION["p_id"]=$radio;
+$qry="select * from project where p_id=$radio";
+$result=$conn->query($qry);
+ $row=$result->fetch_assoc();
+$p_name=$row['p_name'];
+$start_date=$row['p_start_date'];
+$end_date=$row['p_end_date'];
+$status=$row['p_status'];
+$budget=$row['p_budget'];
+$details=$row['p_details'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,11 +58,6 @@ if(isset($_GET['msg']))
     <!-- MyTemplate CSS -->
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="jquery-ui.css">
-  <script src="jquery-1.10.2.min.js"></script>
-  <script src="jquery-ui.js"></script>   
-<script>$(document).ready(function() {
-    $("#proj").accordion({collapsible: true, active: false});
-});</script>
     
 </head>
 

@@ -13,10 +13,14 @@ if(isset($_GET['msg']))
 				
 	}
 		
-	else		
-	{
-		$msg1="Enter All the Entries!";		
-	}	
+	else if($_GET['msg']==3)
+		{
+			$msg1="User name already exists!";	
+		}	
+		else	
+		{
+		$msg1="Enter All the Entries or user already exists!";		
+		}	
 	
 }
 ?>
@@ -45,11 +49,7 @@ if(isset($_GET['msg']))
     <!-- MyTemplate CSS -->
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="jquery-ui.css">
-  <script src="jquery-1.10.2.min.js"></script>
-  <script src="jquery-ui.js"></script>   
-<script>$(document).ready(function() {
-    $("#proj").accordion({collapsible: true, active: false});
-});</script>
+ 
     
 </head>
 
@@ -77,7 +77,7 @@ if(isset($_GET['msg']))
 				<div class="collapse navbar-collapse navbar-right" id="dropdown-box-1">
 					
 					<ul class="nav navbar-nav">
-						<li><a href="../logout.php">LOGOUT</a></li>
+						<li><a href="../admin/index.php">HOME</a></li>
 					</ul>
 					
 				</div>
@@ -106,7 +106,7 @@ if(isset($_GET['msg']))
 										<div id="details" class="tab-pane fade in active">
 										<div class="panel-group">
 										<br>
-									  <?php $result=$conn->query("select * from project_manager");
+									  <?php $result=$conn->query("select pm_id,pm_name,pm_address,pm_contact,pm_email,pm_doj,pm_sal,p_name from project_manager,project  where project.p_id=project_manager.p_id");
 									if($result->num_rows>0)
 									{ 
 										$i=1;
@@ -120,6 +120,7 @@ if(isset($_GET['msg']))
     							</div>
     							<?php echo '<div  class="panel-collapse collapse" id="'.$i.'">';?>
      									<h5><font color="blue">PROJECT MANAGER  ID:<?php echo $row['pm_id'];?></font></h5>
+											<h5><font color="green">Working On Project  :</font><font color="maroon"><?php echo $row['p_name'];?></font></h5>
 											<h5><font color="green">Address  :</font><font color="maroon"><?php echo $row['pm_address'];?></font></h5>
 											<h5><font color="green">Contact  :</font><font color="maroon"><?php echo $row['pm_contact'];?></font></h5>
 											<h5><font color="green">Email :</font><font color="maroon"><?php echo $row['pm_email'];?></font></h5>

@@ -26,11 +26,21 @@ if (isset($_POST['submit1']))
 	$doj = $conn->real_escape_string($doj);
 	$sql = "INSERT INTO project_manager(p_id,pm_id,pm_name,pm_address,pm_contact,pm_email,pm_sal,pm_doj)VALUES ('$p_id',NULL,'$name','$address','$contact','$email','$salary','$doj')";
 	$sql1 = "INSERT INTO user(u_name,u_email,u_level,u_password)VALUES ('$name','$email','2','$contact')";
-	if ($conn->query($sql) === TRUE and $conn->query($sql1) === TRUE) 
+	if ($conn->query($sql) === TRUE ) 
 	{
-    $msg1="New record created successfully";
-    header("Location: index.php?msg=1");
+		if($conn->query($sql1) === TRUE)
+         {
+         	$msg1="New record created successfully";
+    		header("Location: index.php?msg=1");
+    	}
+    	else
+    	{
+    		$sql="delete from project_manager where pm_name= '$name'";
+    		$result=$conn->query($sql);
+    		header("Location: index.php?msg=3");
+    	}
 	} 
+
 	else
 	{
     $msg2=$conn->error;

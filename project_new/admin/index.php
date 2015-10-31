@@ -163,7 +163,6 @@ if(isset($_GET['msg']))
 					</div>
 						 <ul class="nav nav-tabs">
 						  <li class="active"><a data-toggle="tab" href="#add">Add</a></li>
-										  <li><a data-toggle="tab" href="#remove">Remove</a></li>
 										  <li><a data-toggle="tab" href="#update">Update</a></li>
 										</ul>
 
@@ -186,7 +185,9 @@ if(isset($_GET['msg']))
 													<td><input type="date" name="start_date" placeholder="YYYY-MM-DD" size=40></font></td>
 												</tr>
 												<tr>
-													<td><h5>End Date</h5></td>
+													<td><h5>End Date</h5>
+														<h6><font color=red>*Leave Blank if currently running</font></h6>
+													</td>
 													<td><input type="date" name="end_date" placeholder="YYYY-MM-DD" size=40></font></td>
 												</tr>
 												<tr>
@@ -215,7 +216,7 @@ if(isset($_GET['msg']))
 											</form>
 										  </div>
 										  
-										  <div id="remove" class="tab-pane fade">
+										<!--  <div id="remove" class="tab-pane fade">
 										      <h3>Select the Projects you want to remove</h3>
 
 													    <form action="index.php#manage_projects" onSubmit="return myfunction();" method="post">
@@ -271,7 +272,7 @@ if(isset($_GET['msg']))
 													<br>
 													<?php include 'rem_project.php';?>
 											</form>
-										  </div>
+										  </div>-->
 										  <div id="update" class="tab-pane fade">
 										    <h3>Select the Project you want to update</h3>
 										    <p>

@@ -45,11 +45,6 @@ if(isset($_GET['msg']))
     <!-- MyTemplate CSS -->
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="jquery-ui.css">
-  <script src="jquery-1.10.2.min.js"></script>
-  <script src="jquery-ui.js"></script>   
-<script>$(document).ready(function() {
-    $("#proj").accordion({collapsible: true, active: false});
-});</script>
     
 </head>
 
@@ -77,7 +72,7 @@ if(isset($_GET['msg']))
 				<div class="collapse navbar-collapse navbar-right" id="dropdown-box-1">
 					
 					<ul class="nav navbar-nav">
-						<li><a href="../logout.php">LOGOUT</a></li>
+						<li><a href="../admin/index.php">HOME</a></li>
 					</ul>
 					
 				</div>

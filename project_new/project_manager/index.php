@@ -1,17 +1,43 @@
-<!--?php
+	<!--?php
 session_start();
 include 'connection.php';
 $uname=$_SESSION['username'];
 echo $uname;?-->
 <?php  
+include 'connection.php';
 	session_start();
 	if(isset($_SESSION['level']) and $_SESSION['level']==2)
 	{
 
+    $uname=$_SESSION['username'];
+    $msg1="";
+    $_SESSION['user']=$uname;
+if(isset($_GET['msg']))
+	
+{
+		
+	if($_GET['msg']==1)
+		
+	{
+			
+		$msg1 = "Successfully updated!";
+			
+				
+	}
+		
+	else		
+	{
+		$msg1="Error!";		
+	}	
+	
+}
+
+
 	}
 	else
 	{
-		echo '<meta http-equiv="refresh" content="1;http://localhost/project/pro/new1/web">';
+		echo '<meta http-equiv="refresh" content="1;http://localhost/project_new/login/index.php">';
+		sleep(1);
 		die("Please Login First");
 	}
 ?>
@@ -68,10 +94,27 @@ echo $uname;?-->
 					
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="#home">HOME</a></li>
-						<li><a href="#projects">PROJECT</a></li>
-						<li><a href="#volunteers">VOLUNTEER</a></li>
-							<li><a href="#funds">FUNDS</a></li>
-								<li><a href="#achievements">ACHIEVEMENTS</a></li>
+						<li class="dropdown" role="presentation">
+							<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+							  PROJECT<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu bullet fadeIn" role="menu">
+							  <li><a href="#projects"><strong>Details</strong></a></li>
+							  <li><a href="../location/index.php"><strong>Project Locations</strong></a></li>
+							</ul> 
+						</li>
+						<li class="dropdown" role="presentation">
+							<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+							  VOLUNTEERS<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu bullet fadeIn" role="menu">
+							  <li><a href="../volunteer/index.php"><strong>VOLUNTEER DETAILS</strong></a></li>
+							  <li><a href="../volunteer/index2.php"><strong>TASK</strong></a></li>
+							</ul> 
+						</li>
+
+							<li><a href="../expenses/index.php">EXPENSES</a></li>
+								<li><a href="../achievement/index.php">ACHIEVEMENTS</a></li>
 						<li><a href="../logout.php">LOGOUT</a></li>
 					</ul>
 					
@@ -80,9 +123,9 @@ echo $uname;?-->
 			</div> <!-- /.container -->
 		</nav> <!-- /.nav -->
 	</header>
-		<!--?php
+		<?php
 		$result=$conn->query("select * from project where project.p_id in(select p_id from project_manager where pm_name='$uname')");
-		 $row=$result->fetch_assoc();?-->
+		 $row=$result->fetch_assoc();?>
 
 	<!-- banner -->
     <section class="banner" id="home">
@@ -188,113 +231,7 @@ echo $uname;?-->
 	</section>	
 	<!-- /.aboutus -->
 	
-	
-	<!-- services -->
-    <section class="aboutus" id="volunteers">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="wow bounceInLeft" data-wow-delay="0.1s">
-						<h1>Volunteers</h1>
-					</div>	
-					<div class="col-sm-7">
-						 <ul class="nav nav-tabs">
-						  <li class="active"><a data-toggle="tab" href="#all">All Vlounteers</a></li>
-										  <li><a data-toggle="tab" href="#adda">Add</a></li>
-										  <li><a data-toggle="tab" href="#remove">Remove</a></li>
-										  <li><a data-toggle="tab" href="#task">Assign Task</a></li>
-						</ul>
-
-									<div class="tab-content">
-										<div id="all" class="tab-pane fade in active">
-										    <h3>All Details</h3>
-										    <p>Some content.</p>
-									  </div>
-									  <div id="adda" class="tab-pane fade">
-										    <h3>Add</h3>
-										    <p>Some content in menu 1.</p>
-										 </div>
-									  <div id="remove" class="tab-pane fade ">
-										    <h3>Remove</h3>
-										    <p>Some content.</p>
-									  </div>
-									  <div id="task" class="tab-pane fade">
-										    <h3>Task</h3>
-										    <p>Some content in menu 1.</p>
-									  </div>
-										 
-									</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-						
-	<section class="aboutus" id="funds">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="wow bounceInLeft" data-wow-delay="0.1s">
-						<h1>FUNDS</h1>
-					</div>	
-					<div class="col-sm-7">
-							 <ul class="nav nav-tabs">
-						  <li class="active"><a data-toggle="tab" href="#det">Details</a></li>
-										  <li><a data-toggle="tab" href="#ad">Add new</a></li>
-										</ul>
-
-										<div class="tab-content">
-										  <div id="det" class="tab-pane fade in active">
-										    <h3>Details</h3>
-										    <p>Some content.</p>
-										  </div>
-										  <div id="ad" class="tab-pane fade">
-										    <h3>Add new</h3>
-										    <p>Some content in menu 1.</p>
-										  </div>
-										 
-										</div>
-
-					</div>
-					
-				</div>
-			</div>
-		</div>
-	</section>
-			<section class="aboutus" id="achievements">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="wow bounceInLeft" data-wow-delay="0.1s">
-						<h1>Achievements</h1>
-					</div>	
-					<div class="col-sm-7">
-							 <ul class="nav nav-tabs">
-						  <li class="active"><a data-toggle="tab" href="#det1">Details</a></li>
-										  <li><a data-toggle="tab" href="#ad1">Add new</a></li>
-										</ul>
-
-										<div class="tab-content">
-										  <div id="det1" class="tab-pane fade in active">
-										    <h3>Details</h3>
-										    <p>Some content.</p>
-										  </div>
-										  <div id="ad1" class="tab-pane fade">
-										    <h3>Add new</h3>
-										    <p>Some content in menu 1.</p>
-										  </div>
-										 
-										</div>
-
-						
-					</div>
-					
-				</div>
-			</div>
-		</div>				
-	</section>	
-			
-	
+		
 	<!-- footer -->
 	<footer id="section-footer">
 		<div class="container">

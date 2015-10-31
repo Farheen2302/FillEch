@@ -24,11 +24,6 @@
     <!-- MyTemplate CSS -->
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="jquery-ui.css">
-  <script src="jquery-1.10.2.min.js"></script>
-  <script src="jquery-ui.js"></script>   
-<script>$(document).ready(function() {
-    $("#proj").accordion({collapsible: true, active: false});
-});</script>
     
 </head>
 
