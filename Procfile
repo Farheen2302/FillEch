@@ -1,1 +1,1 @@
-web: vendor/bin/heroku-php-apache2 project_new/web/
+web: vendor/bin/heroku-php-apache2 web/
