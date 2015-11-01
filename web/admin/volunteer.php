@@ -229,7 +229,7 @@ if(isset($_GET['msg']))
 										  <div id="remove" class="tab-pane fade">
 										      <h3>Select the Volunteers you want to remove</h3>
 
-													    <form action="index.php" onSubmit="return myfunction();" method="post">
+													    <form action="volunteer.php" onSubmit="return myfunction();" method="post">
 										    	<?php $result1=$conn->query("select * from volunteer");
 													if($result1->num_rows>0)
 													{
