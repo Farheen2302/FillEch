@@ -1,5 +1,6 @@
 <?php  
-include 'connection.php';
+include('../connection.php');
+
 $p_id=$_POST['p_id']; 
 $p_name=$_POST['p_name'];
 $p_start_date=$_POST['start_date'];

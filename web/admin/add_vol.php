@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'connection.php';
+include('../connection.php');
 $p_id=$_POST['p_id'];
 $name=$_POST['name'];
 $address=$_POST['address'];

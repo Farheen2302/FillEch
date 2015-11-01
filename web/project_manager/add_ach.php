@@ -1,26 +1,27 @@
 <?php
+session_start();
 include('../connection.php');
-$p_id=$_POST['p_id'];
-$amount=$_POST['amount'];
+$p_id=$_SESSION['p_id'];
+$title=$_POST['title'];
 $details=$_POST['details'];
 if (isset($_POST['submit1'])) 
 {
 	$p_id = stripslashes($p_id);
-	$amount = stripslashes($amount);
+	$title = stripslashes($title);
 	$details = stripslashes($details);
 	$p_id = $conn->real_escape_string($p_id);
-	$amount = $conn->real_escape_string($amount);
+	$title = $conn->real_escape_string($title);
 	$details = $conn->real_escape_string($details);
-	$sql = "INSERT INTO expenses(e_id,p_id,amount,detail,added_on)VALUES (NULL,'$p_id','$amount','$details',curdate())";
+	$sql = "INSERT INTO achievement(ac_title,p_id,ac_details,updated_on)VALUES ('$title','$p_id','$details',curdate())";
 	if ($conn->query($sql) == TRUE) 
 	{
     $msg1="New record created successfully";
-    header("Location: expenses.php?msg=1");
+    header("Location: achievement.php?msg=1");
 	} 
 	else
 	{
     $msg2=$conn->error;
-    header("Location: expenses.php?msg=2");
+    header("Location: achievement.php?msg=2");
     }
  }
 

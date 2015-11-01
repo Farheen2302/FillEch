@@ -1,5 +1,6 @@
 <?php  
-include 'connection.php';
+include('../connection.php');
+
 	session_start();
 	if(isset($_SESSION['level']) and $_SESSION['level']==2)
 	{
@@ -95,7 +96,7 @@ if(isset($_GET['msg']))
 							</a>
 							<ul class="dropdown-menu bullet fadeIn" role="menu">
 							  <li><a href="#projects"><strong>Details</strong></a></li>
-							  <li><a href="../location/index.php"><strong>Project Locations</strong></a></li>
+							  <li><a href="location.php"><strong>Project Locations</strong></a></li>
 							</ul> 
 						</li>
 						<li class="dropdown" role="presentation">
@@ -108,8 +109,8 @@ if(isset($_GET['msg']))
 							</ul> 
 						</li>
 
-							<li><a href="../expenses/index.php">EXPENSES</a></li>
-								<li><a href="../achievement/index.php">ACHIEVEMENTS</a></li>
+							<li><a href="expenses.php">EXPENSES</a></li>
+								<li><a href="achievement.php">ACHIEVEMENTS</a></li>
 						<li><a href="../logout.php">LOGOUT</a></li>
 					</ul>
 					

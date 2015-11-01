@@ -1,6 +1,8 @@
 <?php
+session_start();
 include('../connection.php');
-$p_id=$_POST["p_id"];
+
+$p_id=$_SESSION["p_id"];
 $l1=$_POST['l1'];
 $l2=$_POST['l2'];
 $city=$_POST['city'];

@@ -1,4 +1,5 @@
-<?php include 'connection.php'; 
+<?php include('../connection.php');
+
  session_start();
 if(isset($_SESSION['level']) and $_SESSION['level']==1)
 {	
@@ -96,7 +97,7 @@ else
 							  PROJECT<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu bullet fadeIn" role="menu">
-							  <li><a href="../view_projects/index.php"><strong>View Projects</strong></a></li>
+							  <li><a href="view_projects.php"><strong>View Projects</strong></a></li>
 							  <li><a href="location.php"><strong>Locations</strong></a></li>
 							  <li><a href="achievement.php"><strong>Achievements</strong></a></li>
 
@@ -108,7 +109,7 @@ else
 							  EMPLOYEES<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu bullet fadeIn" role="menu">
-							  <li><a href="../employee/index.php"><strong>Project Managers</strong></a></li>
+							  <li><a href="manager.php"><strong>Project Managers</strong></a></li>
 							  <li><a href="volunteer.php"><strong>Volunteers</strong></a></li>
 							</ul> 
 						</li>
@@ -185,13 +186,14 @@ else
 													<td><input type="date" name="end_date" placeholder="YYYY-MM-DD" size=40></font></td>
 												</tr>
 												<tr>
-													<td><h5>Status</h5></font></td>
+													<td><h5>Status</h5></td>
 													<td><input list="status" name="status" size=40>
 														<datalist id="status">
-															<option value="In progress">
-																<option value="Finished">
-																</datalist></td>
-												</tr>
+															<option value="In progress"></option>
+																<option value="Finished"></option>
+															</datalist>
+															</td>
+											</tr>
 												<tr>
 													<td><h5>Budget</h5></td>
 													<td><input type="number" name="budget" size=40 step="1000" min="0"></font></td>

@@ -1,7 +1,7 @@
-<?php 
-include('../connection.php');
+<?php include('../connection.php');
 
 session_start();
+$uname=$_SESSION["user"];
 $msg1="";
 if(isset($_GET['msg']))
 	
@@ -11,30 +11,19 @@ if(isset($_GET['msg']))
 		
 	{
 			
-		$msg1 = "Successfully updated!";
+		$msg1 = "Successfully added!";
 			
 				
 	}
 		
 	else		
 	{
-		$msg1="Error!";		
+		$msg1="Enter All the Entries!";		
 	}	
 	
 }
-
-$radio=$_POST['radio'];
-$_SESSION["p_id"]=$radio;
-$qry="select * from project where p_id=$radio";
-$result=$conn->query($qry);
- $row=$result->fetch_assoc();
-$p_name=$row['p_name'];
-$start_date=$row['p_start_date'];
-$end_date=$row['p_end_date'];
-$status=$row['p_status'];
-$budget=$row['p_budget'];
-$details=$row['p_details'];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,6 +48,7 @@ $details=$row['p_details'];
     <!-- MyTemplate CSS -->
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="jquery-ui.css">
+ 
     
 </head>
 
@@ -78,7 +68,7 @@ $details=$row['p_details'];
 						<span class="icon-bar"></span>
 					</button>
 					<div class="navbar-brand">
-						<a href="../admin/index.php#manage_projects">BACK</a>
+						<a href="index.php">BACK</a>
 					</div>
 				</div>
 				
@@ -86,8 +76,7 @@ $details=$row['p_details'];
 				<div class="collapse navbar-collapse navbar-right" id="dropdown-box-1">
 					
 					<ul class="nav navbar-nav">
-			
-						<li><a href="../admin/index.php">HOME</a></li>
+						<li><a href="index.php">Home</a></li>
 					</ul>
 					
 				</div>
@@ -96,59 +85,87 @@ $details=$row['p_details'];
 		</nav> <!-- /.nav -->
 	</header>	
 	<!-- banner -->
-	<!-- /.banner -->
-
-	<section class="aboutus" id="manage_projects">
+	<!-- aboutus -->
+   <section class="aboutus" id="manage_projects">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="wow bounceInLeft" data-wow-delay="0.1s"> 
-						<h1>UPDATE PROJECT</h1> 
+						<h1>Achievements</h1> 
 					</div>
+							<div class="col-sm-7">
 						 <ul class="nav nav-tabs">
-						  <li class="active" ><a data-toggle="tab" href="#update">Update</a></li>
+						  <li class="active"><a data-toggle="tab" href="#details">Details</a></li>
+										  <li><a data-toggle="tab" href="#add">Add</a></li>
+									
 										</ul>
-
 										<div class="tab-content">
-										  <div id="update" class="tab-pane fade in active">
+									
+										<div id="details" class="tab-pane fade in active">
+										<div class="panel-group">
+										<br>
+									  <?php $result=$conn->query("select * from achievement where achievement.p_id in(select p_id from project_manager where pm_name='$uname')");
+									if($result->num_rows>0)
+									{ 
+										$i=1;
+										while($row=$result->fetch_assoc())
+										{  $_SESSION["p_id"]=$row["p_id"];
+										?> <div class="panel panel-default">
+ 							   <div class="panel-heading">
+      								<h5 class="panel-title">
+       				 				<?php echo '<a data-toggle="collapse" href="#'.$i.'">'."By:".$row["ac_title"]."</a>";?>
+     							 	</h5>
+    							</div>
+   
+    							<?php echo '<div  class="panel-collapse collapse" id="'.$i.'">';?>
+     									
+										<h5><font color="green">Details:</font><font color="maroon"><?php echo $row['ac_details'];?></font></h5>
+										
+										<h5><font color="green">Updated On: </font><font color="maroon"><?php echo $row["updated_on"];?></font></h5>	
+											<br>
+	  							</div>
+ 										
+    							</div>
+
+ 										<?php
+ 										$i++;
+ 										}   		
+									 
+									}
+									else 
+									{
+										echo "There are no Achievements!";
+									}?>
+
+										   
+										 </div>
+</div>
+										
+										  <div id="add" class="tab-pane fade ">
 										  	<h4><font color=green><?php echo $msg1?></font></h4>
-										     <form action="update.php" method="post">
+										    <h3>Add</h3>
+
+
+										     <form action="add_ach.php" method="post">
 											
 											<table border="0">
 												<tr>
 													<td>
-														<h5>Project Name&nbsp;&nbsp;</h5></td>
+														<h5>Title : </h5></td>
 														<td>
-														 <input type="text" name="p_name" value="<?php echo $p_name ?>" size=40></font>
-
+														 <input type="text" name="title" placeholder="Title" size=40></font>
 														</td>
 												</tr>
+													
 												<tr>
-													<td><h5>Start Date</h5></td>
-													<td><input type="date" name="start_date" value="<?php echo $start_date ?>" size=40></font></td>
+													<td>
+														<h5>Details :</h5></td>
+														<td><textarea rows="4" cols="40" name="details" type="text" placeholder="Enter details here..."></textarea></font>
+														<br><br></td>
 												</tr>
+												
 												<tr>
-													<td><h5>End Date</h5></td>
-													<td><input type="date" name="end_date" placeholder="YYYY-MM-DD" value="<?php echo $end_date ?>" size=40></font></td>
-												</tr>
-												<tr>
-													<td><h5>Status</h5></font></td>
-													<td><input list="status" name="status" value="<?php echo $status ?>" size=40>
-														<datalist id="status">
-															<option value="In progress">
-																<option value="Finished">
-																</datalist></td>
-												</tr>
-												<tr>
-													<td><h5>Budget</h5></td>
-													<td><input type="number" name="budget" value="<?php echo $budget ?>" size=40 step="1000" min="0"></font></td>
-												</tr>
-												<tr>
-													<td><h5>Details</h5></td>
-													<td><textarea rows="4" cols="40" name="details" type="text" value="details"><?php echo $details ?></textarea></font></td>
-												</tr>
-												<tr>
-													<td><input type="submit" name="submit1" value="Update"></td>
+													<td><input type="submit" name="submit1" value="Add Achievement"></td>
 												</tr>
 											</table>
 
@@ -156,34 +173,15 @@ $details=$row['p_details'];
 									
 											</form>
 										  </div>
-										  
-										  										</div>
+									  </div>
+						 </div>
+					</div>
 				</div>				
 			</div>
 		</div>
 	</section>
-	<!-- services -->
 	
-	<!-- footer -->
-	<footer id="section-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 col-lg-12">
-					<div class="wow fadeIn" data-wow-delay="0.4s">
-						<div class="btn-circle-scroll">
-							<a href="#header-banner" class="btn-circle">
-								<i class="fa fa-angle-double-up animated"></i>
-							</a>
-						</div>
-					</div>
-					<p>© Copyright 2013 by www.reachinghand.org. All Rights Reserved.</p>
-				</div>
-			</div>	
-		</div>
-	</footer>
-	<!-- /.footer -->
-	
-	
+	</section>						
 	<!-- Core JavaScript Files -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

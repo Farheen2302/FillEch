@@ -1,6 +1,7 @@
 <?php
 session_start();
-include 'connection.php';
+include('../connection.php');
+
 $uname=$_SESSION['user'];
 $name=$_POST['name'];
 $details=$_POST['t_details'];

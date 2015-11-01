@@ -2,7 +2,7 @@
 session_start();
 include('../connection.php');
 
-$p_id=$_SESSION["p_id"];
+$p_id=$_POST['p_id'];
 $name=$_POST['name'];
 $address=$_POST['address'];
 $contact=$_POST['contact'];
@@ -25,17 +25,27 @@ if (isset($_POST['submit1']))
 	$email = $conn->real_escape_string($email);
 	$salary = $conn->real_escape_string($salary);
 	$doj = $conn->real_escape_string($doj);
-	$sql = "INSERT INTO volunteer(p_id,v_id,v_name,v_address,v_contact,v_email,v_sal,v_doj)VALUES ('$p_id',NULL,'$name','$address','$contact','$email','$salary','$doj')";
-	$sql1 = "INSERT INTO user(u_name,u_email,u_level,u_password)VALUES ('$name','$email','3','$contact')";
-	if ($conn->query($sql) === TRUE and $conn->query($sql1) === TRUE) 
+	$sql = "INSERT INTO project_manager(p_id,pm_id,pm_name,pm_address,pm_contact,pm_email,pm_sal,pm_doj)VALUES ('$p_id',NULL,'$name','$address','$contact','$email','$salary','$doj')";
+	$sql1 = "INSERT INTO user(u_name,u_email,u_level,u_password)VALUES ('$name','$email','2','$contact')";
+	if ($conn->query($sql) === TRUE ) 
 	{
-    $msg1="New record created successfully";
-    header("Location: index.php?msg=1");
+		if($conn->query($sql1) === TRUE)
+         {
+         	$msg1="New record created successfully";
+    		header("Location: manager.php?msg=1");
+    	}
+    	else
+    	{
+    		$sql="delete from project_manager where pm_name= '$name'";
+    		$result=$conn->query($sql);
+    		header("Location: manager.php?msg=3");
+    	}
 	} 
+
 	else
 	{
     $msg2=$conn->error;
-    header("Location: index.php?msg=2");
+    header("Location: manager.php?msg=2");
     }
  }
 

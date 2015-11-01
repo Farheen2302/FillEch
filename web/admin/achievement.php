@@ -1,4 +1,4 @@
-<?php include 'connection.php';
+<?php include('../connection.php');
 $msg1="";
 if(isset($_GET['msg']))
 	

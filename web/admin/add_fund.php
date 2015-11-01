@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'connection.php';
+include('../connection.php');
 $p_id=$_POST['p_id'];
 $bill=$_POST['bill'];
 $amount=$_POST['amount'];

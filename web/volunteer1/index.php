@@ -1,10 +1,7 @@
-﻿	<!--?php
-session_start();
-include 'connection.php';
-$uname=$_SESSION['username'];
-echo $uname;?-->
+﻿
 <?php  
-include 'connection.php';
+include('../connection.php');
+
 	session_start();
 	if(isset($_SESSION['level']) and $_SESSION['level']==3)
 	{

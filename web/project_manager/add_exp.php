@@ -1,6 +1,7 @@
 <?php
+session_start();
 include('../connection.php');
-$p_id=$_POST['p_id'];
+$p_id=$_SESSION['p_id'];
 $amount=$_POST['amount'];
 $details=$_POST['details'];
 if (isset($_POST['submit1'])) 
