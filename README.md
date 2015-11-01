@@ -34,6 +34,16 @@ The application provides an effortless mechanism to manage different locations,p
 * Ubuntu 14.04/15.04
 * Chrome and Mozilla.
 
+#How to use on localhost
+ * Download the zip, or fork and clone the repo.
+ * Export the project_db.sql (use project_back.sql if the former does not work)
+ * Make changes in web/connection.php to suit your database setting.
+ * Configure your localhost.
+ * Home page- web/index.php
+ * Admin login: user-admin, password- 12345
+ * Add new employees, each employee uses hi name/phone number as id-passowrd.
+ * Play around with the application, report bugs and suggest changes if any.
+
 #Meet the awesome team
 - [Maseera]( https://github.com/maseeraali)
 - [Aditi](https://github.com/aditi5)
