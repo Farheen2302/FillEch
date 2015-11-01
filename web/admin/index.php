@@ -275,7 +275,7 @@ else
 										    	<form id="update_id" action="../update_proj/index.php"  method="post">
 
 										    	<?php 
-										    		include 'connection.php';
+										    		include('../connection.php');
 										    		$result2=$conn->query("select * from project");
 													if($result2->num_rows>0)
 													{
