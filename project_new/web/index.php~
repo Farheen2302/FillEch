@@ -55,7 +55,7 @@
 						<li class="active"><a href="#home">HOME</a></li>
 						<li><a href="#aboutus">ABOUT</a></li>
 						<li><a href="#services">PROGRAMS</a></li>
-						<li><a href="../login/index.php">LOGIN</a></li>
+						<li><a href="/login/index.php">LOGIN</a></li>
 						<li><a href="#contactus">CONTACT</a></li> 
 					</ul>
 					
