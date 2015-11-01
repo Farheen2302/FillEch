@@ -1,7 +1,7 @@
 <?php  
 include 'connection.php';
-	session_start();
-	$uname=$_SESSION['user'];
+session_start();
+$uname=$_SESSION['user'];
 $msg1="";
 $msg2="";
 if(isset($_GET['msg']))
@@ -113,7 +113,7 @@ if(isset($_GET['msg']))
 										<div id="details" class="tab-pane fade in active">
 										<div class="panel-group">
 										<br>
-									  <?php $result=$conn->query("select task_name,task_status,date_of_sub,dead_line,pm_id,task_detail,v_name from task,volunteer where task.pm_id in(select pm_id from project_manager where pm_name='$uname') and task.v_id=volunteer.v_id");
+									  <?php $result=$conn->query("select * from task where task.pm_id in(select pm_id from project_manager where pm_name='$uname') group by task_name");
 									if($result->num_rows>0)
 									{ 
 										$i=1;
@@ -128,7 +128,7 @@ if(isset($_GET['msg']))
     							</div>
    
     							<?php echo '<div  class="panel-collapse collapse" id="'.$i.'">';?>
-     									 <h5><font color="green">Assigned to:</font><font color="maroon"><?php echo $row["v_name"];?></font></h5>
+     									
 										     <h5><font color="green">Task Status:</font><font color="maroon"><?php echo $row["task_status"];?></font></h5>
 											<h5><font color="green">Start Date:</font><font color="maroon"><?php echo $row["date_of_sub"];?></font></h5>
 											<h5><font color="green">Dead Line:</font><font color="maroon"><?php echo $row["dead_line"];?></font></h5>
