@@ -10,7 +10,7 @@ $checked_count = count($_POST['projectName']);
 // Loop to store and display values of individual checked checkbox.
 foreach($_POST['projectName'] as $selected) {
 	echo "<p>".$selected;
-	$sql2="delete from task where task.v_id=volunteer.v_id and volunteer.v_name='$selected'";
+	$sql2="delete from task where v_id in (select v_id from volunteer where v_name='$selected')";
 	$sql="delete from volunteer where v_name= '$selected'";
 	$sql1="delete from user where u_name= '$selected'";
 	if ($conn->query($sql2) === TRUE and $conn->query($sql) === TRUE and $conn->query($sql1) === TRUE) {
