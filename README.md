@@ -13,9 +13,9 @@
 
 - [PPT] (http://tinyurl.com/fillech-ghci15)
 
-**Demo Deployment**
+**Demo Deployment(work in progress)**
 
-- [Heroku] (https://fillech.herokuapp.com)
+- [Web Heroku] (https://fillech.herokuapp.com)
 
 
 #Details of the web app
