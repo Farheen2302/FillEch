@@ -94,7 +94,7 @@ if(isset($_GET['error']))
 				<div class="collapse navbar-collapse navbar-right" id="dropdown-box-1">
 					
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="../index.php">BACK</a></li>
+						<li class="active"><a href="../web/index.php">BACK</a></li>
 					</ul>
 					
 				</div>
@@ -111,7 +111,7 @@ if(isset($_GET['error']))
 
 			
 		
-		<form class="form" action="verify.php" method="POST">
+		<form class="form" action="../verify.php" method="POST">
 		<div id="menu" align="middle" >
 			<h1><strong>WELCOME</strong></h1>
 			<p><input type="text" placeholder="Username" size=30 name="username"><span class="err"><br><?php echo $msg2?></span></p>

@@ -1,6 +1,7 @@
 <?php include 'connection.php';
 session_start();
 $uname=$_SESSION['user'];
+$_SESSION["p_id"]=$_SESSION['p_id'];
 $msg1="";
 if(isset($_GET['msg']))
 	
@@ -117,7 +118,7 @@ if(isset($_GET['msg']))
 										$i=1;
 										while($row=$result->fetch_assoc())
 										{ 
-											$_SESSION["p_id"]=$row['p_id'];
+											//$_SESSION["p_id"]=$row['p_id'];
 										?> <div class="panel panel-default">
  							   <div class="panel-heading">
       								<h5 class="panel-title">
@@ -144,6 +145,7 @@ if(isset($_GET['msg']))
 									}
 									else 
 									{
+
 										echo "There are no volunteers!";
 									}?>
 

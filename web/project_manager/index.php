@@ -104,7 +104,7 @@ if(isset($_GET['msg']))
 							</a>
 							<ul class="dropdown-menu bullet fadeIn" role="menu">
 							  <li><a href="../volunteer/index.php"><strong>Volunteer Details</strong></a></li>
-							  <li><a href="../volunteer/index2.php"><strong>Task</strong></a></li>
+							  <li><a href="../task/index.php"><strong>Task</strong></a></li>
 							</ul> 
 						</li>
 
@@ -163,6 +163,7 @@ if(isset($_GET['msg']))
 							<h5><font color="green">Project Budget  :</font><font color="maroon"><?php echo $row['p_budget'];?></font></h5>
 							<h5><font color="green">Project Details :</font><font color="maroon"><?php echo $row['p_details'];?></font></h5>
 							<br><br>
+							<?php $_SESSION["p_id"]=$row['p_id'];?>
 
 										  </div>
 										  <div id="update" class="tab-pane fade">

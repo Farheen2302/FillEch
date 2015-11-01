@@ -25,19 +25,19 @@ if (isset($_POST['submit']))
 			
                         if($level=="1")
                          {
-				header('Location: ../../admin/index.php?var=<?php echo $row["u_name"] ?>');
+				header('Location: admin/index.php?var=<?php echo $row["u_name"] ?>');
 			}
 			else if($level=="2"){
-				header('Location: ../../project_manager/index.php');
+				header('Location: project_manager/index.php');
 			}
 			else {
-				header('Location: ../../volunteer.php');
+				header('Location: volunteer.php');
 			}
 
 		}
 		else
 		{
-			header("Location:index.php?error=1");
+			header("Location:login/index.php?error=1");
 			
 		}	
 
@@ -45,16 +45,16 @@ if (isset($_POST['submit']))
 	}
 	elseif($_POST['username']=="")
 	{
-		header("Location:index.php?error=2");
+		header("Location:login/index.php?error=2");
 	}
 	else
 	{
-		header("Location:index.php?error=3&name=".$_POST['name']);
+		header("Location:login/index.php?error=3&name=".$_POST['name']);
 	}
 }
 else
 {
-	header("Location:index.php");
+	header("Location:login/index.php");
 	
 }
 

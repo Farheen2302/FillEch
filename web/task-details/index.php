@@ -89,7 +89,7 @@ include 'connection.php'; ?>
 </div>
 							
 							<br><br>
-							<?php $result=$conn->query("select * from project_manager where pm_id=(select pm_id from task where task_name='$task')");?>
+							<?php $result=$conn->query("select * from project_manager where pm_id in(select pm_id from task where task_name='$task')");?>
 							<?php //if($result->num_rows>0)
 							$row=$result->fetch_assoc();?>
 							<h3><font color="blue">Assigned by:</font></h3>
