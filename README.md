@@ -1,10 +1,10 @@
 # Team FillEch
 
 **TECH FOR GOOD 2015**  
-**TRACK 2- Project Management Application**  
+**TRACK 2: Project Management Application**  
 ***NGOs: SVYM and Reaching Hand***  
 
-#Importnat Links
+#Important Links
 
 **Link to the video**
 - [Video 1](http://tinyurl.com/Fillech-video1)
@@ -22,8 +22,8 @@
 
 **About the app**
 
-Build with an aim to manage multiple projects, and act as medium of communication within the organization.
-The application provides an effortless mechanism to manage different locations,projects managers, volunteers, funds, expenses and achievements of a project.
+Build with an aim to manage multiple projects,and act as medium of communication within the organization.
+The application provides an effortless mechanism to manage different locations,projects managers, volunteers, funds, expenses, and achievements of a project.
 
 **Technologies used**
 * LAMP STACK
