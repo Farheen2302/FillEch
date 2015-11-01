@@ -1,7 +1,7 @@
 <?php  
 include 'connection.php';
-session_start();
-$uname=$_SESSION['user'];
+	session_start();
+	$uname=$_SESSION['user'];
 $msg1="";
 $msg2="";
 if(isset($_GET['msg']))
@@ -120,6 +120,7 @@ if(isset($_GET['msg']))
 										while($row=$result->fetch_assoc())
 										{  
 											$_SESSION["pm_id"]=$row["pm_id"];
+											$tname=$row["task_name"];
 										?> <div class="panel panel-default">
  							   <div class="panel-heading">
       								<h5 class="panel-title">
@@ -128,11 +129,39 @@ if(isset($_GET['msg']))
     							</div>
    
     							<?php echo '<div  class="panel-collapse collapse" id="'.$i.'">';?>
-     									
-										     <h5><font color="green">Task Status:</font><font color="maroon"><?php echo $row["task_status"];?></font></h5>
-											<h5><font color="green">Start Date:</font><font color="maroon"><?php echo $row["date_of_sub"];?></font></h5>
-											<h5><font color="green">Dead Line:</font><font color="maroon"><?php echo $row["dead_line"];?></font></h5>
-											<h5><font color="green">Task Details:</font><font color="maroon"><?php echo $row["task_detail"];?></font></h5>
+     									<table  border="0">
+     										<tr>
+     											<td><h5><font color="green">Task Status</font></h5></td>
+     											<td><h5><font color="maroon"><?php echo $row["task_status"];?></font></h5></td>
+     										</tr>
+     										<tr>
+     											<td><h5><font color="green">Start Date</font></h5></td>
+     											<td><h5><font color="maroon"><?php echo $row["date_of_sub"];?></font></h5></td>
+     										</tr>
+     										<tr>
+     											<td><h5><font color="green">Dead Line</font></h5></td>
+     											<td><h5><font color="maroon"><?php echo $row["dead_line"];?></font></h5></td>
+     										</tr>
+     										<tr>
+     											<td><h5><font color="green">Task Details&nbsp;&nbsp;</font></h5></td>
+     											<td><h5><font color="maroon"><?php echo $row["task_detail"];?></font></h5></td>
+     										</tr>
+     										<tr>
+     											<td><h5><font color="green">Assigned to</font></h5></td>
+											<?php $result1=$conn->query("select v_name from volunteer where v_id in(select v_id from task where task_name='$tname')");
+											if($result1->num_rows>0)
+											{ 
+						
+											while($row1=$result1->fetch_assoc())
+											{ 
+											?> 
+											<td><h5><font color="maroon"><?php echo $row1["v_name"];?></font></h5></td>
+										</tr>
+										<tr>
+											<td></td>
+											<?php }
+										}?>
+									</table>
 											<br><br>
 											<br>
 	  							</div>

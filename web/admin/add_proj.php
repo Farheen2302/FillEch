@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'connection.php';
+include('../connection.php');
 $project_name=$_POST['p_name'];
 $sdate=$_POST['start_date'];
 $edate=$_POST['end_date'];

@@ -1,4 +1,5 @@
-<?php include 'connection.php';
+<?php include('../connection.php');
+
 session_start();
 $uname=$_SESSION['user'];
 $_SESSION["p_id"]=$_SESSION['p_id'];

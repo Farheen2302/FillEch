@@ -1,5 +1,5 @@
 <?php
-include 'connection.php';
+include('../connection.php');
 $p_id=$_POST['p_id'];
 $title=$_POST['title'];
 $details=$_POST['details'];

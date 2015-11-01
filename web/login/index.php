@@ -94,7 +94,7 @@ if(isset($_GET['error']))
 				<div class="collapse navbar-collapse navbar-right" id="dropdown-box-1">
 					
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="../web/index.php">BACK</a></li>
+						<li class="active"><a href="../index.php">BACK</a></li>
 					</ul>
 					
 				</div>

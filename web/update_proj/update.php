@@ -1,6 +1,7 @@
 <?php  
 session_start();
-include 'connection.php';
+include('../connection.php');
+
 $p_id=$_SESSION["p_id"]; 
 $p_name=$_POST['p_name'];
 $p_start_date=$_POST['start_date'];
