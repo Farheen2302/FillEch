@@ -131,7 +131,7 @@ if(isset($_GET['msg']))
 									}
 									else 
 									{
-										echo "There are no project managers!";
+										echo "There are no funds!";
 									}?>
 
 										   

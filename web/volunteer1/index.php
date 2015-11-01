@@ -225,7 +225,7 @@ if(isset($_GET['msg']))
 							      </h4>
 							    </div>
     							<div  class="panel-collapse collapse" id="collapse2">
-									  <?php $result=$conn->query("select * from task where v_id=(select v_id from volunteer where v_name='$uname') and task_status='finished'");
+									  <?php $result=$conn->query("select * from task where v_id=(select v_id from volunteer where v_name='$uname') and task_status='completed'");
 									if($result->num_rows>0)
 									{ 
 										while($row=$result->fetch_assoc())
